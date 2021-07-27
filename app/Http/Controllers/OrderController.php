@@ -97,4 +97,29 @@ class OrderController extends Controller
 
 
     }
+
+
+    public function showOrderDetail(){
+        $user = auth()->user();
+        return view('order.order-details',['orders' => $user->orders]);
+    }
+
+    public function showOrderItems($order_no){
+        $user = auth()->user();
+
+    // $orders = []; 
+    //     foreach($user->orders->where("order_number", "=" , $order_no)->first()->products as $order){
+    //         array_push($orders,[
+    //             "product" => $order,
+    //             'detail' => $order->pivot,
+    //         ]);
+    //     };
+    //     return $orders;
+    
+        return $user->orders->where("order_number", "=" , $order_no)->first()->products;
+    }
+
+    
+
 }
+

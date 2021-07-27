@@ -13,8 +13,9 @@ class StripePaymentController extends Controller
     public function stripe(Request $request,$order)
     {   
         $order = Order::find($request->order);
-        return view('stripe',['order' => $order]);
+        return view('stripe.stripe',['order' => $order]);
     }
+
     public function stripePost(Request $request)
     {
         $order = Order::find($request->order_id);

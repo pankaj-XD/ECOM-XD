@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
@@ -22,6 +22,12 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
+// user
+Route::get('/logout',function(){
+    Auth::logout();
+    return redirect()->back();
+});
+
 // Product
 Route::get('/',[ProductController::class,'index']);
 Route::get('/product/{product}',[ProductController::class,'productShow']);
@@ -34,22 +40,11 @@ Route::delete('/remove-from-cart',[CartController::class,'removeFromCart']);
 //order
 Route::get('/order',[OrderController::class,'index']);
 Route::post('/order',[OrderController::class,'store']);
-// Route::delete('/remove-from-cart',[CartController::class,'removeFromCart']);
-
+Route::get('/myorder',[OrderController::class,'showOrderDetail']);
+Route::get('/order-item/{order_no}',[OrderController::class,'showOrderItems']);
 
 // payment
 Route::get('/stripe/{order}',[StripePaymentController::class,'stripe']);
 Route::post('/stripe',[StripePaymentController::class,'stripePost'])->name('stripe.post');
 
 
-
-
-// Name: Test
-
-// Number: 4242 4242 4242 4242
-
-// CSV: 123
-
-// Expiration Month: 12
-
-// Expiration Year: 2024
