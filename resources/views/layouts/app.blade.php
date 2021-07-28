@@ -46,11 +46,11 @@
             <div class="nav__mobile_list">
                 <section>
                     <div class="nav__item">
-                        <span>Categories</span>
+                        <span><a href="/category">Categories</a></span>
                     </div>
-                    <div class="nav__item">
+                    {{-- <div class="nav__item">
                         <span>whislist</span>
-                    </div>
+                    </div> --}}
                     <div class="nav__item">
                         <span><a href="/cart">Cart</a></span>
                     </div>
@@ -77,7 +77,7 @@
 
             <div class="nav__list">
                 <div class="nav__item">
-                    <span>Category</span>
+                    <span><a href="/category">Categories</a></span>
                 </div>
                 <!-- <div class="nav__item">
                     <span>whislist</span>

@@ -3,53 +3,50 @@
 
 @section('content')
 
-    
-<main class="product-container">
+
+    <main class="product-container">
 
 
 
-@foreach($products as $product)
-    
-<section class="product-item">
-<img class="product-img" src="{{ $product->image }}" /> 
-    <span class="product-category">{{ $product->category->name }}</span>
-    <p class="product-title" width="80px" style="text-overflow: ellipsis;">
-    @php
+        @foreach ($products as $product)
+
+            <section class="product-item">
+                <img class="product-img" src="{{ $product->image }}" />
+                <span class="product-category">{{ $product->category->name }}</span>
+                <p class="product-title" width="80px" style="text-overflow: ellipsis;">
+                    @php
                         if (strlen($product->title) < 20) {
                             echo $product->title;
                         } else {
                             echo substr($product->title, 0, 18) . '...';
                         }
                     @endphp
-    </p>
-    <div class=" product-action">
-        <span class="sale-price">${{ $product->price }} <del class="price">$ {{ $product->price }}
-            </del></span>
-        <form action="/add-to-cart" method="post">
-        @csrf
-            <input type="hidden" name="product_id" value="{{ $product->id }}">
-            <input type="hidden" name="quantity" value="1">
-            <button type="submit" class="cart-btn"><i class="add-icon">+ Add</i></button>
-        </form>
-    </div>
-    <a href="/product/{{$product->id}}" class="product__preview">preview</a>
-</section>
+                </p>
+                <div class=" product-action">
+                    <span class="sale-price">${{ $product->price }} <del class="price">$ {{ $product->price }}
+                        </del></span>
+                    <form action="/add-to-cart" method="post" class="addToCartForm">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit" class="cart-btn"><i class="add-icon">+ Add</i></button>
+                    </form>
+                </div>
+                <a href="/product/{{ $product->id }}" class="product__preview">preview</a>
+            </section>
 
 
-@endforeach
-
-
-
+        @endforeach
 
 
 
 
 
 
-</main>
 
 
 
+    </main>
 
 
 
@@ -68,5 +65,8 @@
 
 
 
-   
+
+
+
+
 @endsection

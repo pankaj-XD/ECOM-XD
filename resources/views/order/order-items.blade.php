@@ -2,28 +2,38 @@
 
 @section('content')
 
-    <h1>MY ORDER's</h1>
+    <div class="order__details">
 
-    @if(count($orders) > 0)
-    @foreach($orders as $order)
-    <div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-   <b>OrderNo: </b>{{ $order->order_number }}
-  </a>
-  <a href="/order-item/{{ $order->order_number }}" class="list-group-item list-group-item-action">  <b>OrderNo: </b>{{ $order->order_number }}</a>
-  <a href="#" class="list-group-item list-group-item-action">  <b>status: </b>{{ $order->status }}</a>
-  <a href="#" class="list-group-item list-group-item-action">  <b>item_count: </b>{{ $order->item_count }}</a>
-  <a href="#" class="list-group-item list-group-item-action">  <b>isPaid: </b>{{ $order->isPaid }}</a>
-  <a href="#" class="list-group-item list-group-item-action">  <b>grand total: </b>{{ $order->grand_total }}</a>
-  <a href="#" class="list-group-item list-group-item-action">  <b>payment mode: </b>{{ $order->payment_method }}</a>
-  <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">  <b>Placement Date: </b>{{ $order->created_at }}</a>
-</div>
-    @endforeach
-    @else
-        <h4>no order</h4>
-    @endif
+
+
+        <h1>ORDER Item's</h1>
+
+
+        <div class="order__list">
+            @foreach ($items as $item)
+
+                <div class="order__box">
+
+                    <ul>
+                        <div class="img__box"><img src="{{ $item->image }}" alt=""></div>
+                        <li> <b>title: </b>{{ $item->title }}</li>
+                        <li> <b>price: </b>{{ $item->price }}</li>
+                        <li> <b>quantity: </b>{{ $item->pivot->quantity }}</li>
+                    </ul>
+                    <a href="/product/{{$item->pivot->product_id}}">Preview</a>
+                </div>
+
+
+            @endforeach
+
+        </div>
+
+
+
+
+
+
+    </div>
 
 
 @endsection
-
-

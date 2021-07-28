@@ -3,9 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\StripePaymentController;
+
+use App\Http\Controllers\admin\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +19,9 @@ use App\Http\Controllers\StripePaymentController;
 |
 */
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+})->middleware(['auth']);
 
 require __DIR__.'/auth.php';
 
@@ -31,6 +34,9 @@ Route::get('/logout',function(){
 // Product
 Route::get('/',[ProductController::class,'index']);
 Route::get('/product/{product}',[ProductController::class,'productShow']);
+
+// category
+Route::get('/category',[CategoryController::class,'index']);
 
 //cart
 Route::get('/cart',[CartController::class,'showCart']);
@@ -48,3 +54,19 @@ Route::get('/stripe/{order}',[StripePaymentController::class,'stripe']);
 Route::post('/stripe',[StripePaymentController::class,'stripePost'])->name('stripe.post');
 
 
+
+// admin
+Route::prefix('admin')->group(function () {
+    
+    Route::get('/dashboard',[AdminController::class,'index']);
+
+
+
+
+
+
+
+
+
+
+});

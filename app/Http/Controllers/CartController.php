@@ -32,7 +32,7 @@ class CartController extends Controller
                 'quantity' => $itemQuantity + 1,
                 'total' => $product->price * ($itemQuantity + 1),
             ]);
-            return redirect()->back();
+            return ['success' => true];
         }else{
             //add new item to cart
             $cartItem = new Cart([
@@ -42,7 +42,7 @@ class CartController extends Controller
                 'total' => $product->price,
             ]);
             $cartItem->save();
-            return redirect()->back();
+            return ['success' => true];
         }
     }
 

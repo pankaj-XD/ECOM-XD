@@ -26,6 +26,9 @@
   
 <div class="container">
   
+    @if (Session::has('success'))
+        <div style="width: 100%"><a href="/" class="btn btn-success" style="margin:0 auto;">Go Back to Homepage </a></div>
+    @endif
         
    
     <div class="row">
@@ -44,6 +47,7 @@
                         <div class="alert alert-success text-center">
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
                             <p>{{ Session::get('success') }}</p>
+                            <h4>CHECKYOUR EMAIL FORM MORE INFO</h4>
                         </div>
                     @endif
                     @if (Session::has('failed'))

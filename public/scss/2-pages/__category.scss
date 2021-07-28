@@ -1,0 +1,26 @@
+.category__container{
+    width: 100%;
+    height: 100%;
+    max-width: 1000px;
+    margin:0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 40px ; 
+    column-gap: 10px ; 
+}
+
+.category__box {
+    flex-basis: 300px;
+    padding: 20px;
+    text-align: start;
+}
+.category__box a {
+    font-size: 2rem;
+    font-weight: 800;
+    white-space: nowrap;
+    padding: 10px;
+    border-bottom: rgba(128, 128, 128, 0.219)  1px solid ; 
+    
+
+}

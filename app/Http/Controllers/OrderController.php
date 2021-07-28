@@ -85,6 +85,7 @@ class OrderController extends Controller
             return "CARD LAGO AB";
         }
 
+        // order product 
         foreach($user->cart as $item){
             $order->products()->attach($item->product,['price' => $item->total , 'quantity' => $item->quantity , 'product_id' => $item->product_id]);
         };
@@ -116,7 +117,8 @@ class OrderController extends Controller
     //     };
     //     return $orders;
     
-        return $user->orders->where("order_number", "=" , $order_no)->first()->products;
+        $items = $user->orders->where("order_number", "=" , $order_no)->first()->products;
+        return view('order.order-items',['items' => $items]);
     }
 
     
