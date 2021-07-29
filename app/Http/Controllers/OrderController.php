@@ -99,7 +99,6 @@ class OrderController extends Controller
 
     }
 
-
     public function showOrderDetail(){
         $user = auth()->user();
         return view('order.order-details',['orders' => $user->orders]);
@@ -108,20 +107,33 @@ class OrderController extends Controller
     public function showOrderItems($order_no){
         $user = auth()->user();
 
-    // $orders = []; 
-    //     foreach($user->orders->where("order_number", "=" , $order_no)->first()->products as $order){
-    //         array_push($orders,[
-    //             "product" => $order,
-    //             'detail' => $order->pivot,
-    //         ]);
-    //     };
-    //     return $orders;
+        // $orders = []; 
+        //     foreach($user->orders->where("order_number", "=" , $order_no)->first()->products as $order){
+        //         array_push($orders,[
+        //             "product" => $order,
+        //             'detail' => $order->pivot,
+        //         ]);
+        //     };
+        //     return $orders;
     
         $items = $user->orders->where("order_number", "=" , $order_no)->first()->products;
         return view('order.order-items',['items' => $items]);
     }
 
     
+    // admin
+    public function listOrder()
+    {
+        $orders = Order::all();
+      return view('admin.order.index',['orders' => $orders]);
+    }
+
+    public function listOrderItems($order)
+    {
+        $orderItems = Order::find($order)->products;
+        return view('admin.order.order-items',['items' => $orderItems]);
+    }
+
 
 }
 
