@@ -189,3 +189,43 @@ nav {
         display: flex;
     }
 }
+
+// search results
+
+.nav__search input:focus {
+    background-color: black;
+    color: #fff;
+}
+
+.nav__search input:focus ~ .search__results ,
+.search__results:hover{
+
+    display: flex;
+}
+
+
+
+.search__results {
+    display: none;
+    position: absolute;
+    z-index: 100;
+    // border: 1px solid red;
+    flex-direction: column;
+    width: 90%;
+    background-color: rgb(29, 28, 28);
+    margin-top:5px; 
+}
+.search__results .search__span{
+    flex:1;
+    border-bottom: 2px solid #fff;
+    padding: 5px;
+    color: #FFF;
+}
+
+
+
+
+
+
+
+

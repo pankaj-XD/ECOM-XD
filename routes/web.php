@@ -19,6 +19,8 @@ use App\Http\Controllers\admin\AdminController;
 |
 */
 
+Route::get('/test',[AdminController::class,'test']);
+
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth']);
@@ -39,25 +41,24 @@ Route::get('/product/{product}',[ProductController::class,'productShow']);
 Route::get('/category',[CategoryController::class,'index']);
 
 //cart
-Route::get('/cart',[CartController::class,'showCart']);
-Route::post('/add-to-cart',[CartController::class,'addToCart']);
-Route::delete('/remove-from-cart',[CartController::class,'removeFromCart']);
+Route::get('/cart',[CartController::class,'showCart'])->middleware(['auth']);;
+Route::post('/add-to-cart',[CartController::class,'addToCart'])->middleware(['auth']);;
+Route::delete('/remove-from-cart',[CartController::class,'removeFromCart'])->middleware(['auth']);;
 
 //order
-Route::get('/order',[OrderController::class,'index']);
-Route::post('/order',[OrderController::class,'store']);
-Route::get('/myorder',[OrderController::class,'showOrderDetail']);
-Route::get('/order-item/{order_no}',[OrderController::class,'showOrderItems']);
+Route::get('/order',[OrderController::class,'index'])->middleware(['auth']);;
+Route::post('/order',[OrderController::class,'store'])->middleware(['auth']);;
+Route::get('/myorder',[OrderController::class,'showOrderDetail'])->middleware(['auth']);;
+Route::get('/order-item/{order_no}',[OrderController::class,'showOrderItems'])->middleware(['auth']);;
 
 // payment
-Route::get('/stripe/{order}',[StripePaymentController::class,'stripe']);
-Route::post('/stripe',[StripePaymentController::class,'stripePost'])->name('stripe.post');
+Route::get('/stripe/{order}',[StripePaymentController::class,'stripe'])->middleware(['auth']);;
+Route::post('/stripe',[StripePaymentController::class,'stripePost'])->name('stripe.post')->middleware(['auth']);;
 
 
 
 // admin
 Route::prefix('admin')->group(function () {
-    
     Route::get('/dashboard',[AdminController::class,'index'])->middleware(['adminCheck']);
     // product
     Route::get('/dashboard/products',[ProductController::class,'listProduct'])->middleware(['adminCheck']);

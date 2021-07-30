@@ -4,9 +4,11 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Transaction;
 use App\Models\User;
+use App\Models\Product;
 
 class AdminController extends Controller
 {
@@ -16,7 +18,6 @@ class AdminController extends Controller
 
         return view('admin.dashboard');
     }
-
     public function showTransactions()
     {
         $transactions = Transaction::all();
@@ -32,5 +33,25 @@ class AdminController extends Controller
         $address = User::find($user_id)->address;
         return view('admin.user.address',['address' => $address ]);
     }
+
+
+    public function test()
+    {
+
+        return view('register');
+        $id = 2; 
+        $avg = DB::table('product_user')->where('product_id', "=" , '2')->avg('rating');
+
+        return $avg;
+    }
+
+
+
+
+
+
+
+
+
 
 }

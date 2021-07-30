@@ -66,8 +66,6 @@ class StripePaymentController extends Controller
 
         }
 
-
-
         // response
         if($res->status == "succeeded"){
             Session::flash('success', 'Payment successful!');
@@ -86,8 +84,6 @@ class StripePaymentController extends Controller
         foreach($user->cart as $item){
             $item->delete();
         }
-
-
 
 
             return back();

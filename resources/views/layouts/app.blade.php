@@ -23,6 +23,7 @@
              integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
 
+
 </head>
 
 <body>
@@ -37,6 +38,9 @@
             <div class="nav__search">
                 <input type="text" placeholder="search">
                 <i class='bx bx-search'></i>
+                <section class="search__results off">
+                    {{-- <a href="/product/1" class="search__span">a</a> --}}
+                </section>
             </div>
 
             <div class="toggleBtn">
@@ -70,10 +74,15 @@
                 <span><a href="/">XYZ</a></span>
             </div>
 
+
             <div class="nav__search">
                 <input type="text" placeholder="search">
                 <i class='bx bx-search'></i>
+                <section class="search__results off">
+                    {{-- <a href="/product/1" class="search__span">a</a> --}}
+                </section>
             </div>
+
 
             <div class="nav__list">
                 <div class="nav__item">

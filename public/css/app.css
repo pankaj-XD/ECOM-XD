@@ -655,4 +655,38 @@ nav {
     display: flex;
   }
 }
+
+.nav__search input:focus {
+  background-color: black;
+  color: #fff;
+}
+
+.nav__search input:focus ~ .search__results,
+.search__results:hover {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.search__results {
+  display: none;
+  position: absolute;
+  z-index: 100;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 90%;
+  background-color: #1d1c1c;
+  margin-top: 5px;
+}
+
+.search__results .search__span {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border-bottom: 2px solid #fff;
+  padding: 5px;
+  color: #FFF;
+}
 /*# sourceMappingURL=app.css.map */

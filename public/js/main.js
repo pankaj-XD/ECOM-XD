@@ -1,12 +1,8 @@
 const navToggleBtn = document.querySelector('.toggleBtn');
 const mobNav= document.querySelector('#mobile .nav__mobile_list');
-
 navToggleBtn.addEventListener('click', e => {
     mobNav.classList.toggle('active');
 } );
-
-
-
 
 const dropBtn = document.querySelector('.drop-down');
 const dropIcon = document.querySelector('.drop-down i.bx');
@@ -48,3 +44,37 @@ addToCartForm.forEach( form => form.addEventListener('submit', (e)=>{
     })
 
 }) );
+
+
+// search product
+const searchBar = document.querySelectorAll('.nav__search');
+const searchInput = document.querySelectorAll('.nav__search input');
+const searchResultBox = document.querySelectorAll('.search__results ');
+
+searchInput.forEach(input => input.addEventListener('keyup',()=>{
+    let term = input.value;
+    searchResultBox.forEach(box => box.innerHTML="");
+
+    if(term){
+        fetch(`http://127.0.0.1:8000/api/f/${term}`)
+            .then(res => res.json())
+            .then(data => {
+                let str = '';
+                
+                if(data.length > 0){
+                    data.slice(0,6).forEach(item => {
+                        let tempStr = `<a href="/product/${item.id}" class="search__span">${item.title}</a>`;
+                        str+= tempStr;
+                    });     
+                }else{
+                    str = "<a href='# class='search__span' style='color:#fff'>No Item found...</a>";
+                }
+               
+
+                searchResultBox.forEach(box => box.innerHTML = str);
+
+            });
+    }
+
+}));
+
