@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->boolean('isAdmin')->default(false);
             $table->unsignedBigInteger('address_id')->nullable();
+            // $table->foreign('address_id')->references('id')->onDelete('cascade');
             $table->timestamps();
         });
     }

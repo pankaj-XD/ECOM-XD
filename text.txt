@@ -1,14 +1,4 @@
-id: 1,
-title: "Fjallraven - Foldsack No. 2 Backpack, Fits 15 Laptops",
-description: "Your not perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-price: "109.60",
-created_at: null,
-updated_at: "2021-07-29T07:12:11.000000Z",
-category_id: 1,
-pivot: {
-order_id: 24,
-product_id: 1,
-quantity: 2,
-price: "219.90",
-},
+      <div class="related__item">
+                    <img src="{{ $product->image }}" width="100" height="100" alt="">
+                    <a href="">Preview</a>
+                </div>

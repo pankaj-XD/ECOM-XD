@@ -35,17 +35,7 @@ class AdminController extends Controller
     }
 
 
-    public function test()
-    {
-
-        return view('register');
-        $id = 2; 
-        $avg = DB::table('product_user')->where('product_id', "=" , '2')->avg('rating');
-
-        return $avg;
-    }
-
-
+   
 
 
 

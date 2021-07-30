@@ -36,6 +36,7 @@ Route::get('/logout',function(){
 // Product
 Route::get('/',[ProductController::class,'index']);
 Route::get('/product/{product}',[ProductController::class,'productShow']);
+Route::get('/product/by/category/{category}',[ProductController::class,'productByCategory']);
 
 // category
 Route::get('/category',[CategoryController::class,'index']);

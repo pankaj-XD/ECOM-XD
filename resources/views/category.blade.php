@@ -8,7 +8,7 @@
         @foreach ($categories as $category)
 
         <div class="category__box">
-            <a>{{ $category->name }}</a>
+            <a href="/product/by/category/{{ $category->id }}">{{ $category->name }}</a>
         </div>
             
         @endforeach

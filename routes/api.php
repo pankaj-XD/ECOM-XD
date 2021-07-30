@@ -19,10 +19,15 @@ use App\Models\Product;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+  
 
 // search api
 Route::get('/f/{q}',function($q){
     $products = Product::where('title','like','%'.$q.'%')->get();
+    return $products;
+});
+Route::get('/product/c/{category}',function($category){
+   
+    $products = Product::where('category_id', '=' , $category)->limit(6)->get();
     return $products;
 });

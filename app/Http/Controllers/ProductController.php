@@ -16,6 +16,14 @@ class ProductController extends Controller
             'products' => $products,
         ]);
     }
+
+    public function productByCategory($category)
+    {
+        $products =  Product::where('category_id',$category)->paginate(5);
+        return view('index',[
+            'products' => $products,
+        ]);
+    }
     
     public function productShow($product){
         $product = Product::find($product);
@@ -28,7 +36,7 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         return view('admin.product.create',['categories' => $categories]);
-    }
+    } 
     
     public function createProduct(Request $req)
     {
