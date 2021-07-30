@@ -39,16 +39,34 @@
         @endforeach
 
 
-
-
-
-
-
-
+        <div class="pagination">
+            {{ $products->links() }}
+        </div>
 
     </main>
 
+<style>
+   .pagination > nav > div:nth-child(2) {
+    display: none;
+   }
+   .pagination > nav > div:nth-child(1) {
+    display: flex;
+    min-width:  300px;
+    justify-content: space-evenly;
+    font-size: 1.2rem;
+    font-weight: 800;
+   }
 
+   .pagination > nav > div:nth-child(1) a:hover ,
+   .pagination > nav > div:nth-child(1) span:hover {
+        color: tomato;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.37);
+   }
+
+   .pagination > nav > div:nth-child(1) > span {
+       display: none;
+   }
+</style>
 
 
 

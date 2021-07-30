@@ -10,8 +10,7 @@ use App\Models\Category;
 class ProductController extends Controller
 {
     public function index(){
-        $products = Product::all();
-        $text =  $products[0]->title;
+        $products = Product::paginate(12);
 
         return view('index',[
             'products' => $products,
@@ -57,12 +56,6 @@ class ProductController extends Controller
         return redirect('/admin/dashboard/products')->with('message', 'New Product Created');
     }
 
-
-
-
-
-
-
     public function listProduct(){
         $products = Product::all();
 
@@ -104,3 +97,8 @@ class ProductController extends Controller
 
     
 }
+
+// current_page: 2,
+// // last_page: 4,
+// first_page_url: "http://127.0.0.1:8000?page=1",
+// last_page_url: "http://127.0.0.1:8000?page=4",
