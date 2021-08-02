@@ -28,7 +28,7 @@
                 {{-- addtocart + wish --}}
                 <div class="action__btn">
                     <button><a href="">Add to Whislist</a></button>
-                    <form action="/add-to-cart" method="post">
+                    <form action="/add-to-cart" method="post" class="addToCartForm">
                         @csrf
                         <input type="hidden" name="product_id" value="{{ $product->id }}">
                         <input type="hidden" name="quantity" value="1">
@@ -41,7 +41,6 @@
         </div>
 
 
-
         {{-- you may also like --}}
         <div class="also__like">
             <h1>you may also like</h1>
@@ -50,10 +49,6 @@
             </div>
         </div>
     </section>
-
-
-
-
 
     
     <style>

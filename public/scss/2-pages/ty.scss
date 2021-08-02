@@ -1,0 +1,40 @@
+.ty__conatiner {
+    min-height: 100vh;
+}
+.ty__box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+}
+// .ty__box h1{
+   
+// }
+.ty__box p{
+    font-size: 1.2rem;
+    color: #222;
+}
+.ty__box span{ 
+    font-weight: 500;
+}
+.ty__box span i{
+    
+    font-weight: 500;
+}
+.ty__box-btn {
+    
+    padding: 5px;
+}
+.ty__box-btn a {
+    background: tomato;
+    padding: 5px 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #000;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.ty__box-btn a:nth-child(2) {
+    background: greenyellow;
+}

@@ -95,6 +95,7 @@ class OrderController extends Controller
             $item->delete();
         }
 
+        return view('ty');
 
 
     }

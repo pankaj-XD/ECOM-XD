@@ -28,6 +28,11 @@
 
 <body>
 
+    <div id="toast">
+        
+    </div>
+
+
     <header>
         <nav id="mobile">
             <div class="nav__logo">
@@ -52,14 +57,41 @@
                     <div class="nav__item">
                         <span><a href="/category">Categories</a></span>
                     </div>
+                    @if (auth()->user())
+                    @if(auth()->user()->isAdmin)
+                    <div class="nav__item">
+                        <span><a href="/admin/dashboard">Dashboard</a></span>
+                    </div>
+                    @endif
+                    @endif
+                  
                     {{-- <div class="nav__item">
                         <span>whislist</span>
                     </div> --}}
+
                     <div class="nav__item">
                         <span><a href="/cart">Cart</a></span>
                     </div>
                     <div class="nav__item">
                         <span><a href="/myorder">Order's</a></span>
+                    </div>
+
+                    <div class="nav__ac">
+
+                        @if (auth()->user())
+                            <div class="login">
+                                <i>{{ auth()->user()->name }}</i>
+                                |
+                                <a href="/logout">Logout</a>
+                            </div>
+                        @else
+                            <div class="login">
+                                <a href="/login">Login</a>
+                                /
+                                <a href="/register">Singup</a>
+                            </div>
+                        @endif
+        
                     </div>
                 </section>
 
@@ -88,6 +120,13 @@
                 <div class="nav__item">
                     <span><a href="/category">Categories</a></span>
                 </div>
+                @if (auth()->user())
+                @if(auth()->user()->isAdmin)
+                <div class="nav__item">
+                    <span><a href="/admin/dashboard">Dashboard</a></span>
+                </div>
+                @endif
+                @endif
                 <!-- <div class="nav__item">
                     <span>whislist</span>
                 </div> -->

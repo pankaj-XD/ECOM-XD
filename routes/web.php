@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\StripePaymentController;
+use App\Http\Controllers\TransactionController;
 
 use App\Http\Controllers\admin\AdminController;
 
@@ -90,3 +91,4 @@ Route::prefix('admin')->group(function () {
 });
 
 
+route::get('/ty',[TransactionController::class,'ty']);

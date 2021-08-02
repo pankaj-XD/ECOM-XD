@@ -25,6 +25,24 @@ if(dropBtn){
     } );
 }
 
+// show toast 
+
+function showToast (msg){
+//    msg = 'item added to cart';
+    const toast = document.getElementById('toast');
+    toast.classList.remove('active');
+    toast.innerHTML = msg;
+    toast.classList.add('active');
+    // console.log(toast);
+    
+    setTimeout(()=> {
+        toast.classList.remove('active');
+    },500);
+}
+
+
+
+
 //add to cart
 const addToCartForm = document.querySelectorAll('.addToCartForm');
 addToCartForm.forEach( form => form.addEventListener('submit', (e)=>{
@@ -39,7 +57,8 @@ addToCartForm.forEach( form => form.addEventListener('submit', (e)=>{
     }).then(response => response.json()).then(data => {
         console.log(data);
         if(data.success){
-            alert("item added to cart");
+            // alert("item added to cart");
+            showToast('item added to cart');
         }
     })
 

@@ -16,7 +16,53 @@ class AdminController extends Controller
         $user = auth()->user();
         if(!$user->isAdmin) return redirect('/');
 
-        return view('admin.dashboard');
+        $counts = [
+            
+        ];
+
+
+        array_push($counts,[
+           'key' => 'Users',
+            'url' => '/admin/dashboard/users',
+            'value' =>  DB::table('users')->count(),
+        ]);
+        array_push($counts,[
+            'key' => 'Product',
+            'url' => '/admin/dashboard/products',
+             'value' =>  DB::table('products')->count(),
+         ]);
+         array_push($counts,[
+            'key' => 'Category',
+            'url' => '/admin/dashboard/categories',
+             'value' =>  DB::table('categories')->count(),
+         ]);
+         
+         array_push($counts,[
+            'key' => 'Transaction',
+            'url' => '/admin/dashboard/transactions',
+             'value' =>  DB::table('transactions')->count(),
+         ]);
+      
+        array_push($counts,[
+           'key' => 'Order Pending',
+           'url' => '/admin/dashboard/orders',
+            'value' =>  DB::table('orders')->where('status',"=","pending")->count(),
+        ]);
+        array_push($counts,[
+           'key' => 'Order Processing',
+           'url' => '/admin/dashboard/orders',
+            'value' =>  DB::table('orders')->where('status',"=","proccessing")->count(),
+        ]);
+        array_push($counts,[
+           'key' => 'Order Completed',
+           'url' => '/admin/dashboard/orders',
+            'value' =>  DB::table('orders')->where('status',"=","completed")->count(),
+        ]);
+    
+
+       
+
+        return view('admin.stats',['counts' => $counts]);
     }
     public function showTransactions()
     {

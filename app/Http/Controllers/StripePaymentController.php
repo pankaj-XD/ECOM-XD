@@ -58,14 +58,7 @@ class StripePaymentController extends Controller
 
         // return $transaction;
 
-        // send mail
-        if($res->status == "succeeded"){
-            $emailAddress = "iampankaj0409@gmail.com";
-            Mail::to($emailAddress)
-                ->send(new TransactioMail($res->id, $res->amount, $res->currency, $res->status ));
-
-        }
-
+      
         // response
         if($res->status == "succeeded"){
             Session::flash('success', 'Payment successful!');
@@ -73,6 +66,15 @@ class StripePaymentController extends Controller
                 "isPaid" => true,
                 "payment_method" => "stripe",
             ]);
+
+         //   send mail
+        if($res->status == "succeeded"){
+            $emailAddress = "iampankaj0409@gmail.com";
+            Mail::to($emailAddress)
+                ->send(new TransactioMail($res->id, $res->amount, $res->currency, $res->status ));
+
+        }
+
 
             $user = auth()->user();
               // order product binding
@@ -93,4 +95,6 @@ class StripePaymentController extends Controller
         }
       
     }
+
+
 }
