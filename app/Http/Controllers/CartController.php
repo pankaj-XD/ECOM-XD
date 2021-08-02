@@ -12,12 +12,17 @@ class CartController extends Controller
     public function showCart(){
         $user = auth()->user();
         $cartItems =  $user->cart;
+        
+        // return $user->cart->sum('total');
+
         $total = 0;
+
         foreach($cartItems as $item){
             $quantity = $item->quantity;
             $price = $item->product->price;
             $total += $quantity * $price;
         }
+        // return $total;
         return view('cart',['cartItems' => $cartItems, 'total' => $total]);
     }
 
@@ -28,10 +33,15 @@ class CartController extends Controller
         //product already exsit
         if(count($user->cart->where("product_id",$product->id)) > 0){
             $itemQuantity = $user->cart->where('product_id',$product->id)->first()->quantity;
+            $itemTotal = $user->cart->where('product_id',$product->id)->first()->total;
+            
+            
+
             $user->cart->where('product_id',$product->id)->first()->update([
                 'quantity' => $itemQuantity + 1,
-                'total' => $product->price * ($itemQuantity + 1),
+                'total' => ($itemQuantity + 1) * $product->price ,
             ]);
+            
             return ['success' => true];
         }else{
             //add new item to cart

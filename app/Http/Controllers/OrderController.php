@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Mail;
+
+
 use App\Models\Order;
 use App\Models\Address;
+use App\Mail\OrderMail;
 
 class OrderController extends Controller
 {
@@ -82,13 +86,22 @@ class OrderController extends Controller
             return redirect('/stripe/'.$order->id);
         }
         if($req->payment_method === "card"){
-            return "CARD LAGO AB";
+            return "Comming soon";
         }
 
         // order product 
         foreach($user->cart as $item){
             $order->products()->attach($item->product,['price' => $item->total , 'quantity' => $item->quantity , 'product_id' => $item->product_id]);
         };
+
+
+   
+
+        // SEND MAIL
+        $emailAddress = "iampankaj0409@gmail.com";
+        Mail::to($emailAddress)
+            ->send(new OrderMail($order->order_number,$order->item_count,$order->grand_total));
+
 
         //empty cart
         foreach($user->cart as $item){

@@ -92,3 +92,4 @@ Route::prefix('admin')->group(function () {
 
 
 route::get('/ty',[TransactionController::class,'ty']);
+route::get('/sm',[StripePaymentController::class,'sendMail']);

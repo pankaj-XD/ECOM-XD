@@ -1,4 +1,8 @@
-      <div class="related__item">
-                    <img src="{{ $product->image }}" width="100" height="100" alt="">
-                    <a href="">Preview</a>
-                </div>
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.googlemail.com
+MAIL_PORT=465
+MAIL_USERNAME=test.mail.pankaj04@gmail.com
+MAIL_PASSWORD=7986674418
+MAIL_ENCRYPTION=ssl
+MAIL_FROM_ADDRESS=test.mail.pankaj04@gmail.com
+MAIL_FROM_NAME="${APP_NAME}"

@@ -39,7 +39,7 @@
     
                 <div class="cart__action">
                     <div>Quantity: <span> {{ $item->quantity }}</span></div>
-                    <div>price: <span> {{ $item->total }}</span></div>
+                    <div>total: <span> {{ $item->total }}</span></div>
                     <div>
                    
                             <form action="remove-from-cart" method="post">
@@ -61,7 +61,7 @@
 
 
         <div class="checkout__conatiner">
-            <h4>total: <span>{{ $total }}</span></h4> <a href="/order">Checkout Now</a>
+            <h4>grand total: <span>{{ $total }}</span></h4> <a href="/order">Checkout Now</a>
         </div>
 
 

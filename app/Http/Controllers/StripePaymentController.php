@@ -7,6 +7,13 @@ use App\Models\Order;
 use App\Models\Transaction;
 use App\Mail\TransactioMail;
 
+// require 'vendor/autoload.php';
+use Mailgun\Mailgun;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+
 use Session;
 use Stripe;
 use Mail;
