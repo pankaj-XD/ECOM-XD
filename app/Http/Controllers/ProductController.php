@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
+
 use App\Models\Product; 
 use App\Models\Category; 
 
@@ -27,6 +29,24 @@ class ProductController extends Controller
     
     public function productShow($product){
         $product = Product::find($product);
+
+        // $wish = false;
+        // // check if item is present in wish or not
+        // $user = auth()->user();
+        // if($user){
+
+        //     return ;
+        //     // $wishlist = DB::table('wishlists')
+        //     // ->whereColumn([
+        //     //     ['user_id', '=', '1'],
+        //     //     ['product_id', '=', '2'],
+        //     // ])->get();
+
+
+        //     // return $wishlist;
+        // }
+
+
         return view('product.detail',['product' => $product]);
     }
     

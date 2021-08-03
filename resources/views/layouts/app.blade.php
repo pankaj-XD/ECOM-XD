@@ -73,6 +73,9 @@
                         <span><a href="/cart">Cart</a></span>
                     </div>
                     <div class="nav__item">
+                        <span><a href="/wishlist">Wishlist</a></span>
+                    </div>
+                    <div class="nav__item">
                         <span><a href="/myorder">Order's</a></span>
                     </div>
 
@@ -132,6 +135,9 @@
                 </div> -->
                 <div class="nav__item">
                     <span><a href="/cart">Cart</a></span>
+                </div>
+                <div class="nav__item">
+                    <span><a href="/wishlist">Wishlist</a></span>
                 </div>
                 <div class="nav__item">
                     <span><a href="/myorder">Order's</a></span>

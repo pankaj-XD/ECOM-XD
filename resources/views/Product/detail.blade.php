@@ -27,7 +27,30 @@
 
                 {{-- addtocart + wish --}}
                 <div class="action__btn">
-                    <button><a href="">Add to Whislist</a></button>
+
+                    @if(auth()->user())
+
+                        @if (auth()->user()->wishlist()->where('product_id',$product->id)->first())
+                            
+                            <button data-action="remove" id="toggleWish"  onclick="toggleWish({{ $product->id }})">Remove From Cart
+                            </button>
+                        
+                            @else
+
+                            <button data-action="add" id="toggleWish"  onclick="toggleWish({{ $product->id }})">Add to wishlist</button>
+                        
+                        @endif
+
+
+                       
+                    @else
+
+                    <button data-action="remove" id="toggleWish"  onclick="toggleWish({{ $product->id }})">Add to wishlist</button>
+
+                    @endif
+                   
+                    
+                        
                     <form action="/add-to-cart" method="post" class="addToCartForm">
                         @csrf
                         <input type="hidden" name="product_id" value="{{ $product->id }}">

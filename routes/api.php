@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Models\Product;
 
+use App\Http\Controllers\WishlistController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -32,3 +34,7 @@ Route::get('/product/c/{category}',function($category){
     $products = Product::where('category_id', '=' , $category)->limit(6)->get();
     return $products;
 });
+
+// wishlist REST API
+// Route::apiResource('wishlist',WishlistController::class);
+

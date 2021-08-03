@@ -97,3 +97,109 @@ searchInput.forEach(input => input.addEventListener('keyup',()=>{
 
 }));
 
+
+// wishlist rest 
+const toggleWish = (product_id) => {
+
+    const toggleWish =  document.querySelector('#toggleWish');
+
+
+    const AuthToken =  document.querySelector('meta[name="csrf-token"]').content;
+
+    if(AuthToken && product_id){
+
+        //add and set remove
+        if(toggleWish.dataset.action == 'add'){ 
+            
+            fetch('/wishlist',{
+                method : 'post',
+                body: JSON.stringify({product_id}),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': AuthToken,
+                }
+            })
+            .then(res => res.json())
+            .then(data =>{
+                console.log(data);
+
+                if(data.status === "noAuth"){
+
+                }
+
+                if(data.status == "added"){
+                    // item added set remove
+                    showToast('item Added to Wishlist');
+                    toggleWish.innerHTML = "Remove From Cart";
+                    toggleWish.dataset.action = 'remove';
+                }
+                
+            })
+        }else{
+            // remove and set add
+            
+            fetch('/wishlist',{
+                method : 'delete',
+                body: JSON.stringify({product_id}),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': AuthToken,
+                }
+            })
+            .then(res => res.json())
+            .then(data =>{
+                console.log(data);
+                
+                if(data.status === "noAuth"){
+                    
+                }
+                
+                if(data.status == "removed"){
+                    // item removed set add 
+                    showToast('Removed from Wishlist');
+                    toggleWish.innerHTML = "Add to wishlist";
+                    toggleWish.dataset.action = 'add';
+        
+                   
+                }
+
+            })
+            
+            
+        }
+        
+
+
+
+
+    }
+
+
+//     if(product_id && AuthToken){
+//         fetch('http://127.0.0.1:8000/wishlist',{
+//             method : 'post',
+//             body: JSON.stringify({product_id}),
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 'X-CSRF-TOKEN': AuthToken,
+//             }
+//         })
+//         .then(res => res.text())
+//         .then(data => {
+//             console.log(data);
+//             if(data.add === 'success'){
+//                 showToast('ADDED TO WISHLIST');
+//             }
+            
+//         }).catch(err => console.warn(err));
+
+
+
+
+
+//     }else{
+//         console.warm('not token or product_id exist')
+//     }
+
+}
+

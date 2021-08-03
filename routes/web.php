@@ -8,6 +8,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\WishlistController;
 
 use App\Http\Controllers\admin\AdminController;
 
@@ -20,7 +21,7 @@ use App\Http\Controllers\admin\AdminController;
 |
 */
 
-Route::get('/test',[AdminController::class,'test']);
+Route::get('/test',[WishlistController::class,'test']);
 
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
@@ -91,5 +92,10 @@ Route::prefix('admin')->group(function () {
 });
 
 
-route::get('/ty',[TransactionController::class,'ty']);
-route::get('/sm',[StripePaymentController::class,'sendMail']);
+Route::get('/ty',[TransactionController::class,'ty']);
+
+
+Route::get('/wishlist',[WishlistController::class,'showWish']);
+Route::post('/wishlist',[WishlistController::class,'addWish']);
+Route::delete('/wishlist',[WishlistController::class,'removeWish']);
+Route::get('/wishlist/delete/{product}',[WishlistController::class,'deleteWish']);
