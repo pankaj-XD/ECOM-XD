@@ -45,9 +45,9 @@ class StripePaymentController extends Controller
         
         
         
-        // make charge
+       
         $res = Stripe\Charge::create ([
-            "amount" => intval($amount) * 100 ,
+            "amount" => $amount * 100 ,
             "currency" => "inr",
             "source" => $request->stripeToken,
             "description" => "orderID:" . $order->id, 

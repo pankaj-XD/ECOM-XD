@@ -61,7 +61,7 @@
 
 
         <div class="checkout__conatiner">
-            <h4>grand total: <span>{{ $total }}</span></h4> <a href="/order">Checkout Now</a>
+            <h4>grand total: <span>₹ {{ $total }}</span></h4> <a href="/order">Checkout Now</a>
         </div>
 
 

@@ -23,7 +23,7 @@
                     @endphp
                 </p>
                 <div class=" product-action">
-                    <span class="sale-price">${{ $product->price }} <del class="price">$ {{ $product->price }}
+                    <span class="sale-price">₹{{ $product->price }} <del class="price">₹ {{ $product->price }}
                         </del></span>
                     <form action="/add-to-cart" method="post" class="addToCartForm">
                         @csrf

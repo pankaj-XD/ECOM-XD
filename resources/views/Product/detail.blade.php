@@ -23,7 +23,7 @@
                 {{-- catgory --}}
                 <span class="product__show-category">{{ $product->category->name }}</span>
                 {{-- price --}}
-                <span class="sale-price">$ {{ $product->price }} <del class="price">$ {{ $product->price }}</del></span>
+                <span class="sale-price">₹ {{ $product->price }} <del class="price">₹ {{ $product->price }}</del></span>
 
                 {{-- addtocart + wish --}}
                 <div class="action__btn">

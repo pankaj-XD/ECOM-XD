@@ -6,7 +6,7 @@
 <br>
 <p><strong>currency: </strong> {{ $currency }} </p>
 <br>
-<p><strong>amount: </strong> {{ $amount }} </p>
+<p><strong>amount: </strong> {{ $amount / 100 }} </p>
 <br>
 <p><strong>status: </strong> {{ $status }} </p>
 <br>
