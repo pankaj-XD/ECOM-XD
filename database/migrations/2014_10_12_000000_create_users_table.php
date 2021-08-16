@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->boolean('isAdmin')->default(false);
+            $table->boolean('isManager')->default(false);
             $table->unsignedBigInteger('address_id')->nullable();
             $table->foreign('address_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

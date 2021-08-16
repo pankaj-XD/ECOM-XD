@@ -133,9 +133,9 @@
                 </div>
               </div>
 
-              <a href="#" class="nav__link">
+              <a href="/admin/dashboard/manage-role/" class="nav__link">
                 <i class="bx bx-compass nav__icon"></i>
-                <span class="nav__name">Explore</span>
+                <span class="nav__name">Handle Roles</span>
               </a>
 
               <a href="#" class="nav__link">

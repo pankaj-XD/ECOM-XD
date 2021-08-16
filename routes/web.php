@@ -62,34 +62,41 @@ Route::post('/stripe',[StripePaymentController::class,'stripePost'])->name('stri
 
 // admin
 Route::prefix('admin')->group(function () {
-    Route::get('/dashboard',[AdminController::class,'index'])->middleware(['adminCheck']);
+    Route::get('/dashboard',[AdminController::class,'index'])->middleware(['managerCheck']);
     // product
-    Route::get('/dashboard/products',[ProductController::class,'listProduct'])->middleware(['adminCheck']);
-    Route::get('/dashboard/product/create',[ProductController::class,'showCreateForm'])->middleware(['adminCheck']);
-    Route::post('/dashboard/product/create',[ProductController::class,'createProduct'])->middleware(['adminCheck']);
-    Route::get('/dashboard/product/{product}',[ProductController::class,'editProduct'])->middleware(['adminCheck']);
-    Route::put('/dashboard/product',[ProductController::class,'updateProduct'])->middleware(['adminCheck']);
+    Route::get('/dashboard/products',[ProductController::class,'listProduct'])->middleware(['managerCheck']);
+    Route::get('/dashboard/product/create',[ProductController::class,'showCreateForm'])->middleware(['managerCheck']);
+    Route::post('/dashboard/product/create',[ProductController::class,'createProduct'])->middleware(['managerCheck']);
+    Route::get('/dashboard/product/{product}',[ProductController::class,'editProduct'])->middleware(['managerCheck']);
+    Route::put('/dashboard/product',[ProductController::class,'updateProduct'])->middleware(['managerCheck']);
     Route::delete('/dashboard/product',[ProductController::class,'deleteProduct'])->middleware(['adminCheck']);
     
     // order
-    Route::get('/dashboard/orders',[OrderController::class,'listOrder'])->middleware(['adminCheck']);
-    Route::get('/dashboard/order/{order}/items',[OrderController::class,'listOrderItems'])->middleware(['adminCheck']);
+    Route::get('/dashboard/orders',[OrderController::class,'listOrder'])->middleware(['managerCheck']);
+    Route::get('/dashboard/order/{order}/items',[OrderController::class,'listOrderItems'])->middleware(['managerCheck']);
     
     // transcation
-    Route::get('/dashboard/transactions',[AdminController::class,'showTransactions'])->middleware(['adminCheck']);
+    Route::get('/dashboard/transactions',[AdminController::class,'showTransactions'])->middleware(['managerCheck']);
     
     // transcation
-    Route::get('/dashboard/categories',[CategoryController::class,'showCategory'])->middleware(['adminCheck']);
-    Route::get('/dashboard/category',[CategoryController::class,'createFromCategory'])->middleware(['adminCheck']);
-    Route::post('/dashboard/category',[CategoryController::class,'createCategory'])->middleware(['adminCheck']);
-    Route::get('/dashboard/category/{category}',[CategoryController::class,'editCategory'])->middleware(['adminCheck']);
-    Route::put('/dashboard/category',[CategoryController::class,'updateCategory'])->middleware(['adminCheck']);
+    Route::get('/dashboard/categories',[CategoryController::class,'showCategory'])->middleware(['managerCheck']);
+    Route::get('/dashboard/category',[CategoryController::class,'createFromCategory'])->middleware(['managerCheck']);
+    Route::post('/dashboard/category',[CategoryController::class,'createCategory'])->middleware(['managerCheck']);
+    Route::get('/dashboard/category/{category}',[CategoryController::class,'editCategory'])->middleware(['managerCheck']);
+    Route::put('/dashboard/category',[CategoryController::class,'updateCategory'])->middleware(['managerCheck']);
     Route::delete('/dashboard/category',[CategoryController::class,'deleteCategory'])->middleware(['adminCheck']);
     
     // user
-    Route::get('/dashboard/users',[AdminController::class,'showUsers'])->middleware(['adminCheck']);
-    Route::get('/dashboard/address/{user_id}',[AdminController::class,'showAddress'])->middleware(['adminCheck']);
+    Route::get('/dashboard/users',[AdminController::class,'showUsers'])->middleware(['managerCheck']);
+    Route::get('/dashboard/address/{user_id}',[AdminController::class,'showAddress'])->middleware(['managerCheck']);
+    
+    //manage role
+    Route::get('/dashboard/manage-role/',[AdminController::class,'showRoles'])->middleware(['adminCheck']);
+    Route::post('/dashboard/manage-role/',[AdminController::class,'handleRoles'])->middleware(['adminCheck']);
 });
+
+
+
 
 
 Route::get('/ty',[TransactionController::class,'ty']);

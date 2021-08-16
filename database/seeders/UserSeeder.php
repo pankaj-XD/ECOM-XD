@@ -28,7 +28,18 @@ class UserSeeder extends Seeder
                 'email' => 'user@gmail.com',
                 'password' => Hash::make('12345678'),
                 'isAdmin' => false,
-            ]
+            ],
         ]);
+        
+        DB::table('users')->insert([
+            'name' => 'manager',
+            'email' => 'man@gmail.com',
+            'password' => Hash::make('12345678'),
+            'isAdmin' => false,
+            'isManager' => true,
+        ]);
+
+
+
     }
 }

@@ -26,7 +26,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // search api
 Route::get('/f/{q}',function($q){
-    $products = Product::where('title','like','%'.$q.'%')->get();
+    $products = Product::where  ('title','like','%'.$q.'%')->get();
     return $products;
 });
 Route::get('/product/c/{category}',function($category){

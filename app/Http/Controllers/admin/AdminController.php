@@ -14,7 +14,7 @@ class AdminController extends Controller
 {
     public function index(){
         $user = auth()->user();
-        if(!$user->isAdmin) return redirect('/');
+        // if(!$user->isAdmin) return redirect('/');
 
         $counts = [
             
@@ -83,6 +83,33 @@ class AdminController extends Controller
 
    
 
+    // roles
+    public function showRoles(){
+        $users = User::all();
+        return view('admin.roles.index',[
+            'users' => $users
+        ]);
+    }
+
+    public function handleRoles(Request $req)
+    {
+    
+        $user = User::find($req->user_id);
+
+
+        if($req->handleManage){
+            // make manager
+            $user->isManager = true;
+            $user->save();
+            return redirect()->back()->with('message', 'User ID: '. $user->id .' promoted to MANAGER Role');
+        }else{
+            // remove manager
+            $user->isManager = false;
+            $user->save();
+            return redirect()->back()->with('message', 'User ID: '. $user->id .' removed from MANAGER Role');
+        }
+        
+    }
 
 
 

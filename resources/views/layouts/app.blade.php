@@ -58,7 +58,7 @@
                         <span><a href="/category">Categories</a></span>
                     </div>
                     @if (auth()->user())
-                    @if(auth()->user()->isAdmin)
+                    @if(auth()->user()->isAdmin || auth()->user()->isManager)
                     <div class="nav__item">
                         <span><a href="/admin/dashboard">Dashboard</a></span>
                     </div>
@@ -124,7 +124,7 @@
                     <span><a href="/category">Categories</a></span>
                 </div>
                 @if (auth()->user())
-                @if(auth()->user()->isAdmin)
+                @if(auth()->user()->isAdmin || auth()->user()->isManager)
                 <div class="nav__item">
                     <span><a href="/admin/dashboard">Dashboard</a></span>
                 </div>
