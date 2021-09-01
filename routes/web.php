@@ -100,8 +100,6 @@ Route::prefix('admin')->group(function () {
 
 
 Route::get('/ty',[TransactionController::class,'ty']);
-
-
 Route::get('/wishlist',[WishlistController::class,'showWish']);
 Route::post('/wishlist',[WishlistController::class,'addWish']);
 Route::delete('/wishlist',[WishlistController::class,'removeWish']);

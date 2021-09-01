@@ -18,7 +18,7 @@ class ManagerCheck
     {
         $user =  auth()->user();
         if($user){
-           if($user->isManager  ){
+           if($user->isManager || $user->isAdmin  ){
                return $next($request);    
            }else{
              return redirect('/');

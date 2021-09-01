@@ -80,7 +80,8 @@ class OrderController extends Controller
         $order->save();
 
         if($req->payment_method === "paypal"){
-            return "PAYPAL PAGE";
+            // return $order;
+            return view('paypal',['order' => $order]);
         }
         if($req->payment_method === "stripe"){
             return redirect('/stripe/'.$order->id);

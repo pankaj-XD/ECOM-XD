@@ -30,6 +30,8 @@ class ProductController extends Controller
     public function productShow($product){
         $product = Product::find($product);
 
+        
+
         // $wish = false;
         // // check if item is present in wish or not
         // $user = auth()->user();
